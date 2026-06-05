@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, User } from 'lucide-react';
 
 const navLinks = [
   { label: 'Home', href: '#' },
@@ -54,12 +54,20 @@ export default function Navbar({ isVisible }) {
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300 rounded-full" />
                 </a>
               ))}
-              <a
-                href="#contact"
-                className="cta-button ml-2 px-5 py-2.5 bg-[#04667b] hover:bg-[#2796a9] text-white text-sm font-semibold tracking-[0.3px] normal-case antialiased rounded-lg transition-all duration-300 shadow-[0_0_10px_rgba(6,53,67,0.4)] hover:shadow-[0_0_20px_rgba(6,53,67,0.8)] hover:-translate-y-0.5 transform"
-              >
-                Get a Quote
-              </a>
+              <div className="flex items-center gap-6">
+                <a
+                  href="#shop"
+                  className="cta-button px-5 py-2.5 bg-[#04667b] hover:bg-[#2796a9] text-white text-sm font-semibold tracking-[0.3px] normal-case antialiased rounded-lg transition-all duration-300 shadow-[0_0_10px_rgba(6,53,67,0.4)] hover:shadow-[0_0_20px_rgba(6,53,67,0.8)] hover:-translate-y-0.5 transform"
+                >
+                  Shop Now
+                </a>
+                <button
+                  aria-label="Profile"
+                  className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#2796a9]/20 text-white border border-white/20 hover:border-[#2796a9] flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0_0_10px_rgba(255,255,255,0.05)] hover:shadow-[0_0_15px_rgba(39,150,169,0.3)] cursor-pointer"
+                >
+                  <User size={18} />
+                </button>
+              </div>
             </nav>
 
             {/* Mobile Hamburger */}
@@ -93,13 +101,22 @@ export default function Navbar({ isVisible }) {
                       {link.label}
                     </a>
                   ))}
-                  <a
-                    href="#contact"
-                    onClick={() => setMobileOpen(false)}
-                    className="cta-button mt-2 px-5 py-3 bg-[#063543] hover:bg-[#052b36] text-white text-sm font-semibold tracking-[0.3px] normal-case antialiased rounded-lg text-center transition-all duration-300 shadow-[0_0_10px_rgba(6,53,67,0.4)] hover:shadow-[0_0_20px_rgba(6,53,67,0.8)]"
-                  >
-                    Get a Quote
-                  </a>
+                  <div className="flex items-center gap-3 mt-2">
+                    <a
+                      href="#shop"
+                      onClick={() => setMobileOpen(false)}
+                      className="cta-button flex-1 px-5 py-3 bg-[#063543] hover:bg-[#052b36] text-white text-sm font-semibold tracking-[0.3px] normal-case antialiased rounded-lg text-center transition-all duration-300 shadow-[0_0_10px_rgba(6,53,67,0.4)] hover:shadow-[0_0_20px_rgba(6,53,67,0.8)]"
+                    >
+                      Shop Now
+                    </a>
+                    <button
+                      aria-label="Profile"
+                      onClick={() => setMobileOpen(false)}
+                      className="w-12 h-12 rounded-full bg-white/10 text-white flex items-center justify-center border border-white/20 transition-all duration-300 active:scale-95 cursor-pointer"
+                    >
+                      <User size={20} />
+                    </button>
+                  </div>
                 </nav>
               </motion.div>
             )}
