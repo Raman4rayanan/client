@@ -470,7 +470,7 @@ const MagicBento = ({
             width: 100%;
           }
           
-          @media (min-width: 600px) {
+          @media (min-width: 768px) {
             .card-responsive {
               grid-template-columns: repeat(2, 1fr);
             }

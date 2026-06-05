@@ -6,7 +6,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-primary-navy pt-16 pb-8 px-6 md:px-16 lg:px-28 text-white w-full">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-12 border-b border-white/10 pb-12">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-10 md:gap-12 border-b border-white/10 pb-12">
 
         {/* Company Info */}
         <div className="md:w-1/3">

@@ -75,7 +75,7 @@ export default function HeroSection({ isVisible }) {
                   hidden: { opacity: 0, y: 40 },
                   visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.33, 1, 0.68, 1] } }
                 }}
-                className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
+                className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
               >
                 Your Partner in <br />
                 <span style={{ color: '#198e9d' }}>Industrial</span> Productivity
@@ -86,7 +86,7 @@ export default function HeroSection({ isVisible }) {
                   hidden: { opacity: 0, y: 30 },
                   visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.33, 1, 0.68, 1] } }
                 }}
-                className="text-base md:text-lg lg:text-xl text-slate-300 font-light max-w-2xl mb-12 leading-relaxed"
+                className="text-sm md:text-lg lg:text-xl text-slate-300 font-light max-w-2xl mb-12 leading-relaxed"
               >
                 Reliable industrial tools, MRO solutions, safety equipment, and technical support tailored for modern industries.
               </motion.p>

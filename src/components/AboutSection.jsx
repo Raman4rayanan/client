@@ -127,7 +127,7 @@ export default function AboutSection() {
                 Why Choose Us
               </motion.h3>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {reasons.map((reason, idx) => {
                   const Icon = reason.icon;
                   return (

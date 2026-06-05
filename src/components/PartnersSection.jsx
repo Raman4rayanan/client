@@ -54,7 +54,7 @@ export default function PartnersSection() {
 
       {/* ----------------- PARTNERS ROW ----------------- */}
       <div className="w-full relative">
-        <h3 className="text-center text-xl font-semibold mb-10 uppercase tracking-widest px-6" style={{ color: '#1b809a' }}>
+        <h3 className="text-center text-lg md:text-xl font-semibold mb-10 uppercase tracking-widest px-6" style={{ color: '#1b809a' }}>
           The Companies We Partner With
         </h3>
         
@@ -65,9 +65,9 @@ export default function PartnersSection() {
           {/* Marquee Track */}
           <div className="flex w-max animate-marquee-left pause-on-hover">
             {/* Set 1 */}
-            <div className="flex gap-20 items-center flex-shrink-0 px-10">
+            <div className="flex gap-12 md:gap-20 items-center flex-shrink-0 px-10">
               {partners.map((partner, idx) => (
-                <div key={`p-set1-${idx}`} className="group flex-shrink-0 w-48 h-24 flex items-center justify-center p-2 cursor-pointer">
+                <div key={`p-set1-${idx}`} className="group flex-shrink-0 w-32 md:w-48 h-16 md:h-24 flex items-center justify-center p-2 cursor-pointer">
                   {/*
                      brightness-0 invert = Pure White. 
                      group-hover resets it back to normal with a transition.
@@ -82,9 +82,9 @@ export default function PartnersSection() {
               ))}
             </div>
             {/* Set 2 */}
-            <div className="flex gap-20 items-center flex-shrink-0 px-10">
+            <div className="flex gap-12 md:gap-20 items-center flex-shrink-0 px-10">
               {partners.map((partner, idx) => (
-                <div key={`p-set2-${idx}`} className="group flex-shrink-0 w-48 h-24 flex items-center justify-center p-2 cursor-pointer">
+                <div key={`p-set2-${idx}`} className="group flex-shrink-0 w-32 md:w-48 h-16 md:h-24 flex items-center justify-center p-2 cursor-pointer">
                   <img 
                     src={partner.src} 
                     alt={partner.name} 
@@ -100,7 +100,7 @@ export default function PartnersSection() {
 
       {/* ----------------- CUSTOMERS ROW ----------------- */}
       <div className="w-full relative">
-        <h3 className="text-center text-xl font-semibold mb-10 uppercase tracking-widest px-6" style={{ color: '#1b809a' }}>
+        <h3 className="text-center text-lg md:text-xl font-semibold mb-10 uppercase tracking-widest px-6" style={{ color: '#1b809a' }}>
           Our Prestigious Customers
         </h3>
         
@@ -111,9 +111,9 @@ export default function PartnersSection() {
           {/* Marquee Track Reverse */}
           <div className="flex w-max animate-marquee-right pause-on-hover">
             {/* Set 1 */}
-            <div className="flex gap-20 items-center flex-shrink-0 px-10">
+            <div className="flex gap-12 md:gap-20 items-center flex-shrink-0 px-10">
               {customers.map((customer, idx) => (
-                <div key={`c-set1-${idx}`} className="group flex-shrink-0 w-48 h-24 flex items-center justify-center p-2 cursor-pointer">
+                <div key={`c-set1-${idx}`} className="group flex-shrink-0 w-32 md:w-48 h-16 md:h-24 flex items-center justify-center p-2 cursor-pointer">
                   <img 
                     src={customer.src} 
                     alt={customer.name} 
@@ -124,9 +124,9 @@ export default function PartnersSection() {
               ))}
             </div>
             {/* Set 2 */}
-            <div className="flex gap-20 items-center flex-shrink-0 px-10">
+            <div className="flex gap-12 md:gap-20 items-center flex-shrink-0 px-10">
               {customers.map((customer, idx) => (
-                <div key={`c-set2-${idx}`} className="group flex-shrink-0 w-48 h-24 flex items-center justify-center p-2 cursor-pointer">
+                <div key={`c-set2-${idx}`} className="group flex-shrink-0 w-32 md:w-48 h-16 md:h-24 flex items-center justify-center p-2 cursor-pointer">
                   <img 
                     src={customer.src} 
                     alt={customer.name} 

@@ -132,7 +132,7 @@ const ChromaGrid = ({ items }) => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
               </div>
 
-              <div className="p-8 md:p-10 flex flex-col items-start text-left">
+              <div className="p-8 md:p-10 flex flex-col items-start text-left overflow-y-auto max-h-[calc(100vh-16rem)]">
                 <h2 className="text-3xl font-extrabold text-primary-navy mb-4">{selectedItem.title}</h2>
                 <p className="text-slate-600 text-lg leading-relaxed">{selectedItem.subtitle}</p>
               </div>

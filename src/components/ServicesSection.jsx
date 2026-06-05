@@ -117,7 +117,7 @@ export default function ServicesSection() {
   }, [selectedCategory]);
 
   return (
-    <section id="services" className="bg-background-light py-20 px-6 md:px-16 lg:px-28">
+    <section id="services" className="bg-background-light py-16 md:py-20 px-6 md:px-16 lg:px-28">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <motion.span

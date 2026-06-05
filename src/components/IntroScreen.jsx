@@ -54,7 +54,7 @@ export default function IntroScreen({ onComplete }) {
           <motion.img
             src="/logo.png"
             alt="CTS Logo"
-            className="w-96 md:w-[500px] h-auto drop-shadow-xl"
+            className="w-[85vw] max-w-[500px] h-auto drop-shadow-xl"
             animate={{ y: [0, -5, 0] }}
             transition={{ duration: 4, ease: 'easeInOut', repeat: Infinity }}
           />
