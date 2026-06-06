@@ -1,8 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Send, User } from 'lucide-react';
+import { MapPin, Phone, Mail, Send, User, CheckCircle2, AlertCircle } from 'lucide-react';
 
 export default function ContactSection() {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    message: ''
+  });
+  const [status, setStatus] = useState('idle'); // 'idle' | 'submitting' | 'success' | 'error'
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!formData.name || !formData.phone || !formData.message) {
+      setStatus('error');
+      setErrorMsg('Please fill in all required fields.');
+      return;
+    }
+
+    setStatus('submitting');
+    setErrorMsg('');
+
+    try {
+      const response = await fetch('http://localhost:5000/api/portfolio/inquiries', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setStatus('success');
+        setFormData({ name: '', phone: '', email: '', message: '' });
+      } else {
+        setStatus('error');
+        setErrorMsg(data.error || 'Failed to submit inquiry.');
+      }
+    } catch (err) {
+      console.error(err);
+      setStatus('error');
+      setErrorMsg('Could not connect to server. Please check your backend is running.');
+    }
+  };
+
   return (
     <section id="contact" className="bg-background-light py-20 px-6 md:px-16 lg:px-28">
       <div className="max-w-7xl mx-auto">
@@ -71,21 +123,29 @@ export default function ContactSection() {
             className="bg-white p-8 rounded-2xl shadow-lg border border-slate-100"
           >
             <h3 className="text-2xl font-bold text-primary-navy mb-6">Send an Inquiry</h3>
-            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="space-y-1">
-                <label className="text-xs font-semibold text-slate-500">Name</label>
+                <label className="text-xs font-semibold text-slate-500">Name *</label>
                 <input
                   type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   placeholder="Your Name"
+                  required
                   className="w-full bg-background-light border border-slate-200 rounded-lg px-4 py-3 text-slate-700 outline-none focus:border-primary-blue focus:ring-1 focus:ring-primary-blue transition-all"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-semibold text-slate-500">Phone Number</label>
+                <label className="text-xs font-semibold text-slate-500">Phone Number *</label>
                 <input
                   type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
                   placeholder="Your Phone Number"
+                  required
                   className="w-full bg-background-light border border-slate-200 rounded-lg px-4 py-3 text-slate-700 outline-none focus:border-primary-blue focus:ring-1 focus:ring-primary-blue transition-all"
                 />
               </div>
@@ -94,32 +154,55 @@ export default function ContactSection() {
                 <label className="text-xs font-semibold text-slate-500">Email (Optional)</label>
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="Your Email"
                   className="w-full bg-background-light border border-slate-200 rounded-lg px-4 py-3 text-slate-700 outline-none focus:border-primary-blue focus:ring-1 focus:ring-primary-blue transition-all"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-semibold text-slate-500">Message</label>
+                <label className="text-xs font-semibold text-slate-500">Message *</label>
                 <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   rows="4"
                   placeholder="How can we help you?"
+                  required
                   className="w-full bg-background-light border border-slate-200 rounded-lg px-4 py-3 text-slate-700 outline-none focus:border-primary-blue focus:ring-1 focus:ring-primary-blue transition-all resize-none"
                 ></textarea>
               </div>
 
               <button
                 type="submit"
+                disabled={status === 'submitting'}
                 style={{ backgroundColor: '#0f5660' }}
                 onMouseEnter={e => e.currentTarget.style.backgroundColor = '#1b809a'}
                 onMouseLeave={e => e.currentTarget.style.backgroundColor = '#0f5660'}
-                className="w-full mt-4 text-white font-bold py-4 rounded-lg flex items-center justify-center gap-2 transform active:scale-[0.98] transition-all duration-300 shadow-md hover:shadow-lg"
+                className="w-full mt-4 text-white font-bold py-4 rounded-lg flex items-center justify-center gap-2 transform active:scale-[0.98] transition-all duration-300 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Message
+                {status === 'submitting' ? 'Sending...' : 'Send Message'}
                 <Send size={18} />
               </button>
+
+              {/* Status Notifications */}
+              {status === 'success' && (
+                <div className="mt-4 p-3 bg-green-50 border border-green-200 text-green-700 rounded-lg flex items-center gap-2 text-sm">
+                  <CheckCircle2 size={16} className="text-green-600 shrink-0" />
+                  <span>Your inquiry has been successfully sent!</span>
+                </div>
+              )}
+              {status === 'error' && (
+                <div className="mt-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg flex items-center gap-2 text-sm">
+                  <AlertCircle size={16} className="text-red-600 shrink-0" />
+                  <span>{errorMsg}</span>
+                </div>
+              )}
             </form>
           </motion.div>
+
 
           {/* Right Column: Map Section */}
           <motion.div
