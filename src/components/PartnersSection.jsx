@@ -1,25 +1,25 @@
 import React from 'react';
 
 const partners = [
-  { name: 'Bosch Power Tools', src: '/boach-Photoroom.png' },
-  { name: 'Ingersoll Rand', src: '/inger.png' },
-  { name: 'Stanley Black & Decker', src: '/stanley.png' },
+  { name: 'Bosch Power Tools', src: '/boach-Photoroom.png', scale: 1.25 },
+  { name: 'Ingersoll Rand', src: '/inger.png', scale: 1.35 },
+  { name: 'Stanley Black & Decker', src: '/stanley.png', scale: 1.00 },
   { name: 'Kärcher', src: '/karcher.png' },
-  { name: 'Eibenstock', src: '/elbenstock.png' },
+  { name: 'Eibenstock', src: '/elbenstock.png', scale: 1.80 },
   { name: 'Klingspor', src: '/Klingspor-Emblem.png' },
-  { name: 'Cromwell Tools Industries', src: '/comwell.png' },
+  { name: 'Cromwell Tools Industries', src: '/comwell.png', scale: 1.35 },
   { name: 'KOVAX Abrasive Solutions', src: '/kovax.png' },
-  { name: 'Atlas Protective Products', src: '/atlas.png' }
+  { name: 'Atlas Protective Products', src: '/atlas.png', scale: 2.00 }
 ];
 
 const customers = [
   { name: 'Nordex India', src: '/nordex-Photoroom.png' },
   { name: 'Senvion India', src: '/Senvion-Photoroom.png' },
-  { name: 'Suzlon Energy', src: '/suzlon-Photoroom.png' },
-  { name: 'Gurit Wind', src: '/gurit-Photoroom.png' },
+  { name: 'Suzlon Energy', src: '/suzlon-Photoroom.png', scale: 1.50 },
+  { name: 'Gurit Wind', src: '/gurit-Photoroom.png', scale: 1.35 },
   { name: 'Indocool Composites', src: '/indocool-Photoroom.png' },
-  { name: 'Stellantis Avtec Powertrain', src: '/Stellantis-Photoroom.png' },
-  { name: 'Exeraxis India', src: '/EVERAXIS-Photoroom.png' }
+  { name: 'Stellantis Avtec Powertrain', src: '/Stellantis-Photoroom.png', scale: 1.35 },
+  { name: 'Exeraxis India', src: '/EVERAXIS-Photoroom.png', scale: 2.00 }
 ];
 
 export default function PartnersSection() {
@@ -49,6 +49,12 @@ export default function PartnersSection() {
           .pause-on-hover:hover {
             animation-play-state: paused;
           }
+          .logo-img {
+            transform: scale(var(--base-scale, 1));
+          }
+          .group:hover .logo-img {
+            transform: scale(calc(var(--base-scale, 1) * 1.05));
+          }
         `}
       </style>
 
@@ -75,7 +81,8 @@ export default function PartnersSection() {
                   <img
                     src={partner.src}
                     alt={partner.name}
-                    className="max-w-full max-h-full object-contain brightness-0 invert opacity-70 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-105"
+                    className="max-w-full max-h-full object-contain brightness-0 invert opacity-70 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100 transition-all duration-500 logo-img"
+                    style={{ '--base-scale': partner.scale || 1 }}
                     title={partner.name}
                   />
                 </div>
@@ -88,7 +95,8 @@ export default function PartnersSection() {
                   <img
                     src={partner.src}
                     alt={partner.name}
-                    className="max-w-full max-h-full object-contain brightness-0 invert opacity-70 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-105"
+                    className="max-w-full max-h-full object-contain brightness-0 invert opacity-70 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100 transition-all duration-500 logo-img"
+                    style={{ '--base-scale': partner.scale || 1 }}
                     title={partner.name}
                   />
                 </div>
@@ -117,7 +125,8 @@ export default function PartnersSection() {
                   <img
                     src={customer.src}
                     alt={customer.name}
-                    className="max-w-full max-h-full object-contain brightness-0 invert opacity-70 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-105"
+                    className="max-w-full max-h-full object-contain brightness-0 invert opacity-70 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100 transition-all duration-500 logo-img"
+                    style={{ '--base-scale': customer.scale || 1 }}
                     title={customer.name}
                   />
                 </div>
@@ -130,7 +139,8 @@ export default function PartnersSection() {
                   <img
                     src={customer.src}
                     alt={customer.name}
-                    className="max-w-full max-h-full object-contain brightness-0 invert opacity-70 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-105"
+                    className="max-w-full max-h-full object-contain brightness-0 invert opacity-70 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100 transition-all duration-500 logo-img"
+                    style={{ '--base-scale': customer.scale || 1 }}
                     title={customer.name}
                   />
                 </div>
